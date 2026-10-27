@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# builds
+.next/
+out/
+build/
+dist/
+
+# runtime data & secrets
+.env
+.env.*
+!.env.example
+*.db
+*.db.bak-*
+*.sqlite
+backend/uploads/
+backups/
+
+# logs
+*.log
+logs/

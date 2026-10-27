@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/mac/projects/rasoi
+exec ~/.opencode/bin/opencode run --continue -m opencode/x-preview-f-free "CONTINUE the Rasoi build. You completed backend+docs and were mid-edit adding the steps column to backend/main.py — first make that consistent (schema CREATE TABLE includes steps, PUT uses it), restart uvicorn on :8601 and re-verify recipe CRUD quickly. THEN build the complete frontend per PROMPT.md (Next.js App Router + Tailwind v4 + Framer Motion + lucide-react in frontend/, port 8600 via next start after npm run build, rewrites /api and /uploads to 127.0.0.1:8601). Follow ALL design/verification requirements in PROMPT.md. Finish with both servers RUNNING and print your final summary." 2>&1 | tee -a build-open.log

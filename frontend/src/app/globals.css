@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-hindi: var(--font-baloo), ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette */
+  --color-tomato: #e8543f;
+  --color-spice: #f5a623;
+  --color-leaf: #3e9b57;
+  --color-chilli: #7c2d12;
+  --color-rosy: #d94f7e;
+  --color-teal: #1f9e9b;
+  --color-caramel: #d96c2c;
+
+  /* Semantic (hybrid: light-dark() resolves via color-scheme) */
+  --color-page: light-dark(#fff9f2, #181009);
+  --color-card: light-dark(#ffffff, #241811);
+  --color-card-soft: light-dark(#fdf2e6, #2d1e14);
+  --color-ink: light-dark(#3d2013, #f6eadf);
+  --color-ink-soft: light-dark(#95705a, #c2a48f);
+  --color-line: light-dark(#f1dfcc, #3b2b1e);
+  --color-primary: light-dark(#e8543f, #f06a55);
+  --color-on-primary: #ffffff;
+
+  --shadow-color: rgb(124 45 18 / 0.13);
+
+  --animate-pop-in: pop-in 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Explicit dark overrides layered after the theme block */
+.dark {
+  --shadow-color: rgb(0 0 0 / 0.55);
+}
+
+@utility shadow-warm {
+  box-shadow:
+    0 22px 48px -24px var(--shadow-color),
+    0 4px 14px -8px var(--shadow-color);
+}
+
+@utility shadow-warm-sm {
+  box-shadow: 0 10px 26px -14px var(--shadow-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-tomato) 25%, transparent);
+}
+
+/* Category chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  background: color-mix(in srgb, var(--chip) 14%, transparent);
+  color: var(--chip);
+  border: 1px solid color-mix(in srgb, var(--chip) 30%, transparent);
+}
+.dark .chip {
+  color: color-mix(in oklab, var(--chip) 72%, white);
+  background: color-mix(in srgb, var(--chip) 22%, transparent);
+}
+.cat-0 { --chip: #f5a623; }
+.cat-1 { --chip: #3e9b57; }
+.cat-2 { --chip: #e8543f; }
+.cat-3 { --chip: #d96c2c; }
+.cat-4 { --chip: #d94f7e; }
+.cat-5 { --chip: #1f9e9b; }
+
+.chip-dot {
+  background: var(--chip);
+}
+
+.tint-btn {
+  background: color-mix(in srgb, var(--chip) 11%, transparent);
+  border-color: color-mix(in srgb, var(--chip) 32%, transparent);
+}
+.dark .tint-btn {
+  background: color-mix(in srgb, var(--chip) 18%, transparent);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--color-tomato);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
